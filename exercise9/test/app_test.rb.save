@@ -1,0 +1,23 @@
+require 'test_helper'
+
+class AppTest < Minitest::Test
+  include Rack::Test::Methods
+
+  def app
+    Sinatra::Application
+  end
+
+  def test_get_root
+    get '/codigo'
+    assert_equal 200, last_response.status
+    assert_equal 'Hello World', last_response.body
+  end
+
+
+  def test_get_code
+    get '/codigo/:code'
+    assert_equal 200, last_response.status
+    #assert_equal 'Integer(:code)', last_response.body
+    
+  end
+end
