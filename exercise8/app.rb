@@ -5,7 +5,6 @@ get '/saludo' do
   'Hola Mundo!'
 end
 
-
 get '/saludo/:name' do
   "Hola #{params[:name]}"
 end

@@ -1,9 +1,10 @@
 #!/bin/bash
 
+echo "GET method"
 curl -G http://echo.httpkit.com
 
-curl --data "param1=value1&param2=value2" http://echo.httpkit.com
+echo "POST method"
+curl  http://echo.httpkit.com --data "param1=value1&param2=value2"
 
-curl --data "param1=value1&param2=value2" http://echo.httpkit.com?"param1=value1&param2=value2"
-
-curl --upload-file uploadfile http://www.example.com/receive.cgi
+echo "PUT method"
+curl http://echo.httpkit.com --upload-file uploadfile
