@@ -12,6 +12,7 @@ class AppTest < Minitest::Test
     get '/saludo'
     assert_equal 200, last_response.status
     assert last_response.body.include?('Hola Mundo!') 
+    puts last_response.body
   end
 
 
