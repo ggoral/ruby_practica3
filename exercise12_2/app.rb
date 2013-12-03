@@ -11,6 +11,10 @@ helpers do
       <input type=\"hidden\" name=\"_method\" value=\"#{params[:method]}\"/>
     </form>"
   end
+
+  def submit(value)
+    "<input type=\"submit\" value=#{value}>"
+  end
 end
 
 get '/' do
