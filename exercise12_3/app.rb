@@ -5,8 +5,11 @@ helpers do
   def form(params, &block)
     if [:post,:get].include?(params[:method])
       form_begin = "<form method=\"#{params[:method]}\" action=\"#{params[:action]}\">"
-      form_content = "block.call"
-      return form_begin + form_content + "</form>"
+      if block_given?
+        form_content = block.call
+        form_begin << form_content
+      end
+      return form_begin << "</form>"
     end
 
     "<form method=\"post\" action=\"#{params[:action]}\">
@@ -24,6 +27,6 @@ get '/' do
 end
 
 get '/login' do
-  form method: :post, action: '/login', { submit('Entrar') }
+  form(method: :post, action: '/login') { submit('Entrar') }
 end
 
