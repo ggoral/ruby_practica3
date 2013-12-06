@@ -15,7 +15,11 @@ get '/login' do
 end
 
 get '/question' do
-  erb :login
+  erb :question
+end
+
+post '/question' do
+  erb :question
 end
 
 get '/index' do
