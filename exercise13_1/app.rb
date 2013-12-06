@@ -5,12 +5,9 @@ configure do
   enable :sessions
 end
 
-before do
-  content_type :txt
-end
-
 get '/' do
-  redirect '/login'
+  redirect to('/login')
+  #redirect '/login'
 end
 
 get '/login' do
@@ -19,6 +16,10 @@ end
 
 get '/question' do
   erb :login
+end
+
+get '/index' do
+  erb :index
 end
 
 get '/set' do
