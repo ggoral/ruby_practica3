@@ -26,13 +26,20 @@ get '/index' do
   erb :index
 end
 
+post '/set' do
+  session[:user] = params[:user]
+  session[:pass] = params[:pass]
+  "Session value set."
+end
+
 get '/set' do
   session[:foo] = Time.now
   "Session value set."
 end
 
 get '/fetch' do
-  "Session value: #{session[:foo]}"
+  "Session user value: #{session[:user]}\n" +
+  "Session pass value: #{session[:pass]}"
 end
 
 get '/logout' do
