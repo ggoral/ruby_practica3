@@ -6,8 +6,11 @@ configure do
 end
 
 get '/' do
-  redirect to('/login')
-  #redirect '/login'
+  if session.has_key?(:user) and session.has_key?(:profile)
+    redirect to('/question')
+  else
+    redirect to('/login')
+  end
 end
 
 get '/login' do
@@ -15,11 +18,18 @@ get '/login' do
 end
 
 get '/question' do
+  redirect to("/question/#{session[:question_number]}")
   erb :question
 end
 
-post '/question' do
-  erb :question
+get '/question/:number' do
+  unless session.has_key?(:user) and session.has_key?(:profile)
+    redirect to('/login')
+  end
+  
+  #Get Database Question
+  session[:question_number] += 1 
+  "Question Number? #{params[:number]}"
 end
 
 get '/index' do
@@ -27,13 +37,11 @@ get '/index' do
 end
 
 post '/set' do
+  #Get Database User & Set Profile
   session[:user] = params[:user]
   session[:pass] = params[:pass]
-  "Session value set."
-end
-
-get '/set' do
-  session[:foo] = Time.now
+  session[:profile] = "admin"
+  session[:question_number] = 1
   "Session value set."
 end
 
