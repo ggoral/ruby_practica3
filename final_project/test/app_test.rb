@@ -7,9 +7,11 @@ class AppTest < Minitest::Test
     Sinatra::Application
   end
 
-  def test_get_root
-    get '/'
+  def test_get_a_user
+    server_response = get '/'
     assert_equal 200, last_response.status
-    assert_equal 'Hello World', last_response.body
+
+    json = JSON.parse server_response.body
   end
+
 end
