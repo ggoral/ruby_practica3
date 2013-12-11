@@ -1,0 +1,11 @@
+<table> 
+  <% @rows.each do |row| %>
+    <tr>
+      <td><%= row.item1 %></td>
+      <% if row.some_test %>
+        <td><%= row.item2 %></td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
+
