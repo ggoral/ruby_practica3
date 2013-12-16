@@ -8,10 +8,13 @@ class AppTest < Minitest::Test
   end
 
   def test_get_a_user
-    server_response = get '/'
+    server_response = get '/resources/1'
     assert_equal 200, last_response.status
 
     json = JSON.parse server_response.body
+    puts json
+    puts json['name']
+
   end
 
 end

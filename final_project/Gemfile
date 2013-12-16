@@ -11,4 +11,5 @@ end
 group :test do
   gem 'minitest', require: 'minitest/autorun'
   gem 'rack-test'
+  gem 'json_expressions', require: 'json_expressions/minitest'
 end
