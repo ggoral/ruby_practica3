@@ -1,6 +1,8 @@
 require 'bundler'
 Bundler.require :default, ENV['RACK_ENV'].to_sym
 
+require 'models/resource'
+
 helpers do
   def edit_resource_url(resource)
     "http://example.com/resources/#{resource.id}/edit"
