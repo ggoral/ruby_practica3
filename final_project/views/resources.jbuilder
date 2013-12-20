@@ -1,7 +1,7 @@
 # Place this file in the `views` directory.
 
  
-json.resources @resources do |json, resource|
+json.resources @resources do |resource|
     json.(resource, :name, :description)
 
     json.links resource.links do |link|
@@ -9,7 +9,7 @@ json.resources @resources do |json, resource|
     end
 end
 
-json.links @links do |json, link|
+json.links @links do |link|
   json.rel "self"
-  json.uri edit_resource_url(@resource)
+  json.uri edit_resources_url
 end

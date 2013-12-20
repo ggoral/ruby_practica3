@@ -10,3 +10,8 @@ get '/saludo/:name' do
   @template_parameter = "Hola #{params[:name]}"
   erb :index
 end
+
+get '/ejemplo/:name' do
+  @template_parameter = "Hola #{params}"
+  erb :index
+end

@@ -1,35 +1,28 @@
 require 'bundler'
 Bundler.require :default, ENV['RACK_ENV'].to_sym
 
-require 'models/resource'
+require_relative 'models/resource'
 
 helpers do
   def edit_resource_url(resource)
     "http://example.com/resources/#{resource.id}/edit"
   end
+
+  def edit_resources_url()
+    "http://example.com/resources/"
+  end
 end
 
-get '/resources/1' do
-  @resource = Hashie::Mash.new(id: 1,
-                               name: "Computadora",
-                               description:"Notebook con 4GB de RAM y 256 GB de espacio en disco con Linux")
-
-  @resource.links = [Hashie::Mash.new(id:1 , 
-                                      rel: "self",
-                                      uri: "http://localhost:9292/resources/1")]
-
+get '/resources/:number' do
+  resource_number = params[:number].to_i - 1
+  @resource = $resources[resource_number]
+  @resource.links = $resources[resource_number].links
   jbuilder :resource
 end
 
 get '/resources' do
-  @resource = Hashie::Mash.new(id: 1,
-                               name: "Computadora",
-                               description:"Notebook con 4GB de RAM y 256 GB de espacio en disco con Linux")
-
-  @resource.links = [Hashie::Mash.new(id:1 , 
-                                      rel: "self",
-                                      uri: "http://localhost:9292/resources/1")]
-  @resources = [@resource]
+    
+  @resources = $resources
   @links = [1]
 
   jbuilder :resources
