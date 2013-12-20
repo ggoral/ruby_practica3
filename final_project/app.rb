@@ -14,7 +14,11 @@ helpers do
 end
 
 get '/resources/:number' do
+  halt 404 if params[:number].to_i == 0 
   resource_number = params[:number].to_i - 1
+
+  $resources.each { |hashie| puts hashie.id } # aca va un test que verifica que exista el id con un select
+  
   @resource = $resources[resource_number]
   @resource.links = $resources[resource_number].links
   jbuilder :resource
@@ -27,3 +31,4 @@ get '/resources' do
 
   jbuilder :resources
 end
+
