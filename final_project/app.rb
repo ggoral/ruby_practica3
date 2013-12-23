@@ -13,17 +13,6 @@ helpers do
   end
 end
 
-get '/resources/:number' do
-  halt 404 if params[:number].to_i == 0 
-  resource_number = params[:number].to_i - 1
-
-  $resources.each { |hashie| puts hashie.id } # aca va un test que verifica que exista el id con un select
-  
-  @resource = $resources[resource_number]
-  @resource.links = $resources[resource_number].links
-  jbuilder :resource
-end
-
 get '/resources' do
     
   @resources = $resources
@@ -31,4 +20,27 @@ get '/resources' do
 
   jbuilder :resources
 end
+
+get '/resources/:number' do
+  halt 404 if params[:number].to_i == 0 
+  resource_number = params[:number].to_i - 1
+# Sino existe el valor que buscamos te deuvelve un 404
+  unless ($resources.detect {|resource| resource["id"] != resource_number })
+    halt 404
+  end
+  
+  @resource = $resources[resource_number]
+  @resource.links = $resources[resource_number].links
+  jbuilder :resource
+end
+
+get '/resources/:number/availability' do
+  puts "response"
+end
+
+get '/resources/:number/bookings' do
+  puts "response #{params}"
+end
+
+
 
