@@ -21,9 +21,9 @@ get '/resources' do
   jbuilder :resources
 end
 
-get '/resources/:number' do
-  halt 404 if params[:number].to_i == 0 
-  resource_number = params[:number].to_i - 1
+get '/resources/:id_resource' do
+  halt 404 if params[:id_resource].to_i == 0 
+  resource_number = params[:id_resource].to_i - 1
 # Sino existe el valor que buscamos te deuvelve un 404
   unless ($resources.detect {|resource| resource["id"] != resource_number })
     halt 404
@@ -34,13 +34,28 @@ get '/resources/:number' do
   jbuilder :resource
 end
 
-get '/resources/:number/availability' do
+get '/resources/:id_resource/availability' do
   puts "response"
 end
 
-get '/resources/:number/bookings' do
-  puts "response #{params}"
+get '/resources/:id_resource/bookings' do
+  puts "response all bookings #{params}"
 end
 
+post '/resources/:id_resource/bookings' do
+  puts "response create a booking #{params}"
+end
+
+delete '/resources/:id_resource/bookings/:id_booking' do
+  puts "response create a booking #{params}"
+end
+
+put '/resources/:id_resource/bookings/:id_booking' do
+  puts "response auth a booking #{params}"
+end
+
+get '/resources/:id_resource/bookings/:id_booking' do
+  puts "response 2 #{params}"
+end
 
 

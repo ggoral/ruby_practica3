@@ -8,6 +8,32 @@ class AppTest < Minitest::Test
     Sinatra::Application
   end
 
+  def test_all_methods
+    server_response = get '/resources'
+    assert_equal 200, last_response.status
+
+    server_response = get '/resources/1'
+    assert_equal 200, last_response.status
+
+    server_response = get '/resources/1/availability'
+    assert_equal 200, last_response.status
+
+    server_response = get '/resources/1/bookings'
+    assert_equal 200, last_response.status
+
+    server_response = post '/resources/1/bookings'
+    assert_equal 200, last_response.status
+
+    server_response = delete '/resources/1/bookings/1'
+    assert_equal 200, last_response.status
+
+    server_response = put '/resources/1/bookings/1'
+    assert_equal 200, last_response.status
+
+    server_response = get '/resources/1/bookings/1'
+    assert_equal 200, last_response.status
+  end
+
   def test_resources
     server_response = get '/resources'
     assert_equal 200, last_response.status
