@@ -57,5 +57,3 @@ end
 get '/resources/:id_resource/bookings/:id_booking' do
   puts "response 2 #{params}"
 end
-
-
