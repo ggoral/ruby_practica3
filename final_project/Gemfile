@@ -6,6 +6,7 @@ gem "hashie"
 
 group :development do
   gem 'rake'
+  gem 'sqlite3'
 end
 
 group :test do
