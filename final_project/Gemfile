@@ -7,10 +7,13 @@ gem "hashie"
 group :development do
   gem 'rake'
   gem 'sqlite3'
+  gem "activerecord"
+  gem "micro_migrations", github: 'svenfuchs/micro_migrations'
 end
 
 group :test do
   gem 'minitest', require: 'minitest/autorun'
   gem 'rack-test'
   gem 'json_expressions', require: 'json_expressions/minitest'
+  gem 'database_cleaner'
 end
