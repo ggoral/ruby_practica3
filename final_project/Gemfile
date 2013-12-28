@@ -3,12 +3,14 @@ source 'https://rubygems.org'
 gem 'sinatra'
 gem "tilt-jbuilder", ">= 0.4.0", :require => "sinatra/jbuilder"
 gem "hashie"
+gem "micro_migrations"
+#gem "micro_migrations", github: 'svenfuchs/micro_migrations'
+
 
 group :development do
   gem 'rake'
   gem 'sqlite3'
   gem "activerecord"
-  gem "micro_migrations", github: 'svenfuchs/micro_migrations'
 end
 
 group :test do
