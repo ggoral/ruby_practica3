@@ -1,1 +1,3 @@
-class Transaction < ActiveRecord::Base; end
+class Transaction < ActiveRecord::Base
+  validates :name, presence: true
+end
