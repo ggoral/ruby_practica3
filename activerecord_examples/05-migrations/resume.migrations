@@ -2,9 +2,10 @@ create Rakefile file
 create Gemfile file
 create config directory
 create config/database.yml
-execute bundle exec rake db:migration
-create db/migration directory
-create db/migration/[timestamp]_my_migration.rb
+execute bundle exec rake db:migrate
+create db/migrate directory
+create db/migrate/timestamp_convention_name.rb
+execute bundle exec rake db:migrate
 
 tips
 bash timestamp
