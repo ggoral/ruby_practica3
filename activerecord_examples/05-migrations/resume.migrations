@@ -1,0 +1,12 @@
+create Rakefile file
+create Gemfile file
+create config directory
+create config/database.yml
+execute bundle exec rake db:migration
+create db/migration directory
+create db/migration/[timestamp]_my_migration.rb
+
+tips
+bash timestamp
+timestamp=$(date +"%Y%m%d%H%M%S"); echo $timestamp
+
