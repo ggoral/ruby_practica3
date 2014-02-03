@@ -5,11 +5,12 @@ gem 'sinatra', ">= 1.1.0"
 gem "tilt-jbuilder", ">= 0.4.0", :require => "sinatra/jbuilder"
 gem "hashie"
 gem 'micro_migrations', github: 'svenfuchs/micro_migrations'
-
+gem 'sqlite3'
+gem 'activerecord'
+gem 'sinatra-activerecord'
 
 group :development do
   gem 'rake'
-  gem 'sqlite3'
   gem "activerecord"
 end
 
