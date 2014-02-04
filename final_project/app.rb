@@ -13,6 +13,11 @@ helpers do
   end
 end
 
+before do
+  content_type("json")
+end
+
+
 get '/resources' do
     
   @resources = $resources

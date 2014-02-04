@@ -8,27 +8,26 @@ Transaction.all.each do |transaction|
   p transaction.name
 end
 
-puts "Add a Personal transaction"
-t = Transaction.new
-t.name = "personal"
-t.save
+#puts "Add a Personal transaction"
+#t = Transaction.new
+#t.name = "personal"
+#t.save
 
-puts "All transaction ids"
-Transaction.all.each do |transaction|
-  p transaction
-end
+#puts "All transaction ids"
+#Transaction.all.each do |transaction|
+#  p transaction
+#end
 
-last_personal_transaction = Transaction.where(name: "personal").order('id desc').first
-p last_personal_transaction
+#last_personal_transaction = Transaction.where(name: "personal").order('id desc').first
+#p last_personal_transaction
 
-low_id_transactions = Transaction.where( " id < 3 ")
-p low_id_transactions
+#low_id_transactions = Transaction.where( " id < 3 ")
+#p low_id_transactions
 
 puts Transaction.create(name: "aAdapter").valid?
-puts Transaction.create(name: nil).valid?
-
+#puts Transaction.create(name: nil).valid?
 
 puts "Validation & Callback when add a Personal transaction"
-t = Transaction.create(name: "DirecTV")
-t.name = "DirecTV"
-t.save
+#t = Transaction.create(name: "DirecTV")
+#t.name = "DirecTV"
+#t.save

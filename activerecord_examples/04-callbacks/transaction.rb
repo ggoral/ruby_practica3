@@ -5,7 +5,7 @@ class Transaction < ActiveRecord::Base
  
   protected
     def normalize_name
-      puts self.name
-      #self.name = self.name.downcase.titleize
+      #puts self.name
+      self.name = name.downcase.titleize * 3
     end
 end

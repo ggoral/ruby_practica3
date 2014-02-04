@@ -55,7 +55,7 @@ class AppTest < Minitest::Test
     matcher = assert_json_match pattern, server_response.body
     #puts json
   end
-
+#buscar mock stub
   def test_first_resource
     server_response = get '/resources/1'
     assert_equal 200, last_response.status

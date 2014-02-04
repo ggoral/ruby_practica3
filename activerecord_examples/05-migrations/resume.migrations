@@ -11,3 +11,9 @@ tips
 bash timestamp
 timestamp=$(date +"%Y%m%d%H%M%S"); echo $timestamp
 
+convention_name: same file and class name
+sample
+
+20140204095057_create_transaction.rb
+
+class CreateTransaction
