@@ -1,7 +1,8 @@
 Bundler.require
-require_relative 'transaction'
+require_relative 'order'
+require_relative 'customer'
 
-ActiveRecord::Base.establish_connection adapter: 'sqlite3', database: '/tmp/transaction.db'
+ActiveRecord::Base.establish_connection adapter: 'sqlite3', database: 'db/test.sqlite3'
 
 #puts "Add a Personal transaction"
 #customer = Customer.new
@@ -12,3 +13,11 @@ ActiveRecord::Base.establish_connection adapter: 'sqlite3', database: '/tmp/tran
 #Customer.all.each do |customer|
 #  p customer.name
 #end
+
+#puts "Delete all customers"
+#Customer.all.each do |customer|
+#  customer.destroy
+#end
+
+#puts "Add a Order"
+#order = Order.create(customer_id: 1, order_date: Time.now)
