@@ -1,3 +1,4 @@
+# 20140204124325_create_supploers
 class CreateSuppliers < ActiveRecord::Migration
   def change
     create_table :suppliers do |t|
