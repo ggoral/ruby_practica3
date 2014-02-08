@@ -1,7 +1,7 @@
 require 'test_helper'
 require 'json_expressions/minitest'
 
-class AppTest < Minitest::Test
+class AppTest < Minitest::Unit::TestCase
   include Rack::Test::Methods
 
   def app

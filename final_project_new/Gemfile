@@ -1,0 +1,20 @@
+source 'https://rubygems.org'
+ruby "2.0.0"
+
+gem 'sinatra', ">= 1.1.0"
+gem 'micro_migrations', github: 'svenfuchs/micro_migrations'
+gem 'sqlite3'
+gem 'activerecord'
+
+
+group :development do
+  gem 'rake'
+end
+
+group :test do
+  gem 'minitest',">= 4.7.5",  require: 'minitest/autorun'
+  gem 'rack-test'
+  gem 'json_expressions', require: 'json_expressions/minitest'
+  gem 'database_cleaner'
+
+end
