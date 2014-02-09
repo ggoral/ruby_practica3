@@ -5,7 +5,7 @@ gem 'sinatra', ">= 1.1.0"
 gem 'micro_migrations', github: 'svenfuchs/micro_migrations'
 gem 'sqlite3'
 gem 'activerecord'
-
+gem 'sinatra-activerecord'
 
 group :development do
   gem 'rake'
@@ -16,5 +16,4 @@ group :test do
   gem 'rack-test'
   gem 'json_expressions', require: 'json_expressions/minitest'
   gem 'database_cleaner'
-
 end
