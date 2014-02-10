@@ -1,5 +1,4 @@
 # Place this file in the `views` directory.
-
  
 json.resources @resources do |resource|
     json.(resource, :name, :description)
