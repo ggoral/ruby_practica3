@@ -24,8 +24,8 @@ helpers do
     hash_path = {
       "resource" => "#{base_url}/resources/#{resource_id}",
       "resources" => "#{base_url}/resources",
-      "resource_availability" => "#{base_url}/resources/#{resource_id}/bookings",
       "resource_bookings" => "#{base_url}/resources/#{resource_id}/bookings",
+      "resource_availability" => "#{base_url}/resources/#{resource_id}/bookings",
       "resource_bookings_booking" => "#{base_url}/resources/#{resource_id}/bookings/#{booking_id}",
     }
     hash_path[path]
@@ -62,10 +62,12 @@ get '/resources' do
   jbuilder :resources
 end
 
-get '/resources/:id_resource/availability' do
+get '/resources/:id_resource/bookings' do
+  puts "\n\n\n\n\n"
+  puts "params:#{params}"
 end
 
-get '/resources/:id_resource/bookings' do
+get '/resources/:id_resource/availability' do
 end
 
 post '/resources/:id_resource/bookings' do

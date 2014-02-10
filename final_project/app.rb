@@ -5,11 +5,11 @@ require_relative 'models/resource'
 
 helpers do
   def edit_resource_url(resource)
-    "http://example.com/resources/#{resource.id}/edit"
+    "http://example.com/resources/#{resource.id}/"
   end
 
   def edit_resources_url()
-    "http://example.com/resources/"
+    'http://example.com/resources/'
   end
 end
 

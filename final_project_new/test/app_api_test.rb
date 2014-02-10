@@ -26,11 +26,12 @@ class AppTest < Minitest::Unit::TestCase
     server_response = get '/resources/1'
     assert_equal 200, last_response.status
 
+    server_response = get '/resources/1/bookings'
+    assert_equal 200, last_response.status
+
     server_response = get '/resources/1/availability'
     assert_equal 200, last_response.status
 
-    server_response = get '/resources/1/bookings'
-    assert_equal 200, last_response.status
 
     server_response = post '/resources/1/bookings'
     assert_equal 200, last_response.status
