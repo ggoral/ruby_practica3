@@ -1,20 +1,18 @@
 source 'https://rubygems.org'
 ruby "2.0.0"
 
-gem 'sinatra', ">= 1.1.0"
-gem "tilt-jbuilder", ">= 0.4.0", :require => "sinatra/jbuilder"
-#sacar micro
-#gem 'micro_migrations', github: 'svenfuchs/micro_migrations'
+gem 'sinatra'
 gem 'sqlite3'
 gem 'activerecord'
 gem 'sinatra-activerecord'
+gem "tilt-jbuilder", require: "sinatra/jbuilder"
 
 group :development do
   gem 'rake'
 end
 
 group :test do
-  gem 'minitest',">= 4.7.5",  require: 'minitest/autorun'
+  gem 'minitest', require: 'minitest/autorun'
   gem 'rack-test'
   gem 'json_expressions', require: 'json_expressions/minitest'
   gem 'database_cleaner'
