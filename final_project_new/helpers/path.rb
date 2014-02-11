@@ -16,8 +16,13 @@ helpers do
   end
 
   def link_path(path, rel=:self, method=nil)
-    link = {rel: rel, uri: url(path) }
-    link[:method] = method if method 
+    link = {
+      rel: rel, 
+      uri: url(path)
+      }
+    if method then
+      link[:method] = method  
+    end
     link
   end
 
@@ -38,6 +43,16 @@ helpers do
     links << link_path(options_path("resource", booking.resource_id), :resource)
     links << link_path(options_path("resource_booking", booking.resource_id, booking.id), :accept, 'PUT')
     links << link_path(options_path("resource_booking", booking.resource_id, booking.id), :reject, 'DELETE')
+    links
+  end
+
+  def bookings_links(bookings)
+    links = [] << link_path(request.url)
+    #ActiveSupport::JSON::Encoding.escape_html_entities_in_json = true
+    cadena = "&"
+    puts cadena.to_json
+    #cadena = html_escapes(cadena)
+    #puts cadena.to_json
     links
   end
   

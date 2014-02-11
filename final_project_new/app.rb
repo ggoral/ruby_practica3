@@ -2,6 +2,8 @@ require 'bundler'
 require 'active_record'
 require 'sinatra'
 require 'sinatra/activerecord'
+require 'json'
+require 'uri'
 
 Bundler.require :default, ENV['RACK_ENV'].to_sym
 
@@ -33,7 +35,8 @@ get '/resources' do
 end
 
 get '/resources/:resource_id/bookings' do
-#  puts "params:#{params}"
+  @bookings = @resource.bookings
+  jbuilder :bookings
 end
 
 get '/resources/:resource_id/availability' do
