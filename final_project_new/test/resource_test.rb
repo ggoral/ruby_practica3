@@ -9,8 +9,16 @@ class ResourceTest < Minitest::Unit::TestCase
   end
 
   def setup
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.start
     Resource.delete_all
   end
+
+  def teardown
+    Resource.delete_all
+    DatabaseCleaner.clean
+  end
+
 
   def test_empty_database
     assert_equal(0, Resource.all.size)
@@ -25,16 +33,16 @@ class ResourceTest < Minitest::Unit::TestCase
   end
 
   def test_accessors
-    @resource = Resource.create(name: "aName", description: "aDescription")
+    @resource = Resource.new(name: "aName", description: "aDescription")
     assert_equal("aName", @resource.name)
     assert_equal("aDescription", @resource.description)
   end
 
   def test_validate_name_presence
-    assert(Resource.create(name: "resource", description: "description").valid?)
-    assert(Resource.create(name: "resource").valid?)
-    refute(Resource.create().valid?)
-    refute(Resource.create(description: "description").valid?)
+    assert(Resource.new(name: "resource", description: "description").valid?)
+    assert(Resource.new(name: "resource").valid?)
+    refute(Resource.new().valid?)
+    refute(Resource.new(description: "description").valid?)
   end
 
 end

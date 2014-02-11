@@ -9,13 +9,14 @@ class BookingTest < Minitest::Unit::TestCase
   end
 
   def setup
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.start
     Resource.delete_all
     @resource = Resource.create(name: 'aResource', description: 'aDescription')
   end
 
    def teardown
-    Resource.delete_all
-    Booking.delete_all
+    DatabaseCleaner.clean
   end
 
   def test_empty_database
@@ -31,16 +32,17 @@ class BookingTest < Minitest::Unit::TestCase
   end
 
   def test_validate_presence
-    assert(@resource.bookings.create(start: Date.today, end: (Date.today+1), status: 'pending').valid?)
-    assert(@resource.bookings.create(start: Date.today, end: (Date.today+1)).valid?)
-    refute(Booking.create().valid?)
-    refute(Booking.create(resource_id: @resource.id ).valid?)
+    assert(@resource.bookings.new(start: Date.today, end: (Date.today+1), status: 'pending').valid?)
+    assert(@resource.bookings.new(start: Date.today, end: (Date.today+1)).valid?)
+    refute(Booking.new().valid?)
+    refute(Booking.new(resource_id: @resource.id ).valid?)
   end
 
   def test_validate_inclusion
-    booking = Booking.create(resource_id: @resource.id, start: Date.today, end: (Date.today+1))
+    booking = Booking.new(resource_id: @resource.id, start: Date.today, end: (Date.today+1))
     booking.status = 'approved'
-    assert_equal(booking.status, 'approved')
+    assert(booking.valid?)
+    #negar este test y los siguientes y el estado rejacted y probar con status cancelado
   end
 
   def test_callback_set_pending_status

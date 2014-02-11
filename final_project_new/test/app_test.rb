@@ -32,9 +32,25 @@ class AppTest < Minitest::Unit::TestCase
     assert_equal 404, last_response.status
   end
 
+  def test_fail_resource_lower_limit
+    server_response = get '/resources/0'
+    assert_equal 404, last_response.status
+  end
+
   def test_first_resource
-    server_response = get '/resources/1'
+    server_response = get "/resources/#{Resource.first.id}"
     assert_equal 200, last_response.status
+  end
+
+  def test_last_resource
+    server_response = get "/resources/#{Resource.last.id}"
+    assert_equal 200, last_response.status
+  end
+
+  def test_fail_resource_upper_limit
+    upper_limit = Resource.all.size + 1
+    server_response = get "/resources/#{upper_limit}"
+    assert_equal 404, last_response.status
   end
 
 end

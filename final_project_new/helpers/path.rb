@@ -6,18 +6,18 @@ helpers do
 
   def options_path(path, resource_id = ':resource_id', booking_id = ':booking_id')
     hash_path = {
-      "resource" => "#{base_url}/resources/#{resource_id}",
       "resources" => "#{base_url}/resources",
-      "resource_availability" => "#{base_url}/resources/#{resource_id}/bookings",
+      "resource" => "#{base_url}/resources/#{resource_id}",
       "resource_bookings" => "#{base_url}/resources/#{resource_id}/bookings",
-      "resource_bookings_booking" => "#{base_url}/resources/#{resource_id}/bookings/#{booking_id}",
+      "resource_availability" => "#{base_url}/resources/#{resource_id}/bookings",
+      "resource_booking" => "#{base_url}/resources/#{resource_id}/bookings/#{booking_id}",
     }
     hash_path[path]
   end
 
   def link_path(path, rel=:self, method=nil)
     link = {rel: rel, uri: url(path) }
-    if method then link[:method] = method end
+    link[:method] = method if method 
     link
   end
 
@@ -29,6 +29,15 @@ helpers do
 
   def resources_links(resources)
     links = [] << link_path(options_path("resources"))
+    links
+  end
+
+  def booking_links(booking)
+    links = [] 
+    links << link_path(options_path("resource_booking", booking.resource_id, booking.id))
+    links << link_path(options_path("resource", booking.resource_id), :resource)
+    links << link_path(options_path("resource_booking", booking.resource_id, booking.id), :accept, 'PUT')
+    links << link_path(options_path("resource_booking", booking.resource_id, booking.id), :reject, 'DELETE')
     links
   end
   

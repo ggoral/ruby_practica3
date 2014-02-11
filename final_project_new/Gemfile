@@ -3,6 +3,7 @@ ruby "2.0.0"
 
 gem 'sinatra', ">= 1.1.0"
 gem "tilt-jbuilder", ">= 0.4.0", :require => "sinatra/jbuilder"
+#sacar micro
 gem 'micro_migrations', github: 'svenfuchs/micro_migrations'
 gem 'sqlite3'
 gem 'activerecord'
