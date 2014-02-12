@@ -17,3 +17,6 @@ sample
 20140204095057_create_transaction.rb
 
 class CreateTransaction
+
+https://github.com/JumpstartLab/curriculum/blob/master/source/topics/sinatra_with_active_record.markdown
+ bundle exec rake db:migrate RACK_ENV=test
