@@ -10,15 +10,11 @@ class AppTest < Minitest::Unit::TestCase
   def setup
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.start
-    Resource.delete_all
-    Booking.delete_all
     @resource = Resource.create( name: 'Computadora', description: 'Notebook con 4GB de RAM y 256 GB de espacio en disco con Linux')
     @booking = @resource.bookings.create(start: Date.today, end: (Date.today+1), status: 'pending')
   end
 
   def teardown
-    Resource.delete_all
-    Booking.delete_all
     DatabaseCleaner.clean
   end
 

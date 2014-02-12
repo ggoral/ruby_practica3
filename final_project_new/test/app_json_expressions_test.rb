@@ -1,7 +1,4 @@
 require 'test_helper'
-require 'json_expressions/minitest'
-require 'time'
-require 'date'
 
 class AppTest < Minitest::Unit::TestCase
   include Rack::Test::Methods

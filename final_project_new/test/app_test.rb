@@ -1,5 +1,4 @@
 require 'test_helper'
-require 'minitest/autorun'
 
 class AppTest < Minitest::Unit::TestCase
   include Rack::Test::Methods
